@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Gajo.gd" type="Script" id=1]
 [ext_resource path="res://gajo.png" type="Texture" id=2]
-[ext_resource path="res://Gaja.gd" type="Script" id=3]
-[ext_resource path="res://gaja.png" type="Texture" id=4]
+[ext_resource path="res://pivot.gd" type="Script" id=3]
+[ext_resource path="res://Gaja.gd" type="Script" id=4]
+[ext_resource path="res://gaja.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 35.8187
@@ -12,7 +13,7 @@ radius = 35.8187
 radius = 35.5446
 
 [node name="World" type="Node2D"]
-position = Vector2( 573.207, 292.982 )
+position = Vector2( 569.883, 294.09 )
 
 [node name="Gajo" type="KinematicBody2D" parent="."]
 script = ExtResource( 1 )
@@ -23,14 +24,31 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gajo"]
 shape = SubResource( 1 )
 
+[node name="Camera2D" type="Camera2D" parent="Gajo"]
+position = Vector2( -0.721985, -0.27243 )
+current = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="pivot" type="Position2D" parent="Gajo"]
+position = Vector2( -6.10352e-005, 0 )
+script = ExtResource( 3 )
+
+[node name="cameraOffset" type="Position2D" parent="Gajo/pivot"]
+position = Vector2( 141.913, -2.92609 )
+
 [node name="Gaja" type="KinematicBody2D" parent="."]
 position = Vector2( 130, -52.0002 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Gaja"]
 position = Vector2( 0.209412, -0.0540619 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gaja"]
-position = Vector2( 0.71582, -0.145538 )
+position = Vector2( -2.05035, 2.62067 )
 shape = SubResource( 2 )
